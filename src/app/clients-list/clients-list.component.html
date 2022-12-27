@@ -1,0 +1,24 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">FullName</th>
+        <th scope="col">EnglishName</th>
+        <th scope="col">BornDate</th>        
+        <th scope="col">City</th>
+        <th scope="col">Bank</th>
+        <th scope="col">Branch</th>
+        <th scope="col">Account</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let client of clients">
+        <td >{{client.hebrew_name|titlecase}}</td>
+        <td>{{client.english_name|titlecase}}</td>
+        <td>{{client.born_date|date:'dd/MM/yyyy'}}</td>
+        <td>{{client.city_code}}</td>
+        <td>{{client.bank}}</td>
+        <td>{{client.branch}}</td>
+        <td>{{client.account_number}}</td>
+      </tr>     
+    </tbody>
+  </table>

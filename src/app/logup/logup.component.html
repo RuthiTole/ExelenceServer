@@ -1,0 +1,52 @@
+<h1>יצירת לקוח</h1>
+<form class="form-group col-md-12" novalidate  (ngSubmit)="save()">
+     <div class="col-md-3">
+      <label for="validationCustom01" class="form-label">שם מלא-עברית</label>
+      <input type="text" class="form-control" (change)="validateName()"  name="hebrew" [(ngModel)]="name_Hebrew" id="validationCustom01"  required>
+      <p  *ngIf="NameHError">{{NameHValid}}</p>
+    </div>
+    <div class="col-md-3">
+      <label for="validationCustom02" class="form-label">שם מלא-אנגלית</label>
+      <input type="text" name="english" (change)="validateNameEnglish()" [(ngModel)]="name_English" class="form-control" id="validationCustom02"required>
+      <p *ngIf="NameEnError">{{NameEnValid}}</p>
+    </div>
+    <div class="col-md-3">
+      <label for="validationCustomUsername" class="form-label">תעודת זהות</label>
+      <div class="input-group has-validation">        
+        <input type="text" [(ngModel)]="identity" name="identity" (change)="getidentity()" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>       
+      </div>
+      <p *ngIf="IdError">{{IdValid}}</p>
+    </div>
+    <div class="col-md-3">
+      <label for="validationCustom04" class="form-label">בנק</label>
+      <select [(ngModel)]="selectedLevel" name="selectedLevel"(change)="selected()" class="form-select" id="validationCustom04" required >
+        <option *ngFor="let bank of banks" [ngValue]="bank">{{bank.Code}}-{{bank.Description}}</option>        
+    </select>      
+    </div>
+    <div class="col-md-3">
+        <label for="validationCustom04" class="form-label">סניפים</label>
+        <select [(ngModel)]="selectedBranch" name="selectedBranch" class="form-select" id="validationCustom08" [disabled]="disableTextbox" required >
+          <option *ngFor="let branch of branches" [ngValue]="branch">{{branch.BranchNumber}}-{{branch.BranchName}}</option>          
+        </select>        
+      </div>
+    <div class="col-md-2">
+      <label for="validationCustom03" class="form-label">עיר</label>
+      <select [(ngModel)]="selectedCity" name="selectedCity" class="form-select" id="validationCustom04" required >
+        <option *ngFor="let city of cities" [ngValue]="city">{{city.city_name}}</option>        
+    </select>
+    </div>
+    <div class="col-md-2">
+      <label for="validationCustom03" class="form-label">תאריך לידה</label>
+      <input type="date" class="form-control" name="date"[(ngModel)]="registerClient.born_date" id="validationCustom03" required>
+    </div>
+  
+    <div class="col-md-2">
+      <label for="validationCustom05" class="form-label">מספר חשבון</label>
+      <input type="text" class="form-control" name="account_number" (change)="validateAcount()" [(ngModel)]="account_number1" id="validationCustom05" required>
+      <p *ngIf="accountError">{{accountValid}}</p>
+    </div>   
+    <div class="col-12">
+      <button style="margin:15px" class="btn btn-success" type="submit">שמירה</button>
+    </div>
+  </form> 
+ 
